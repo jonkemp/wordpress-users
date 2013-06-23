@@ -1,0 +1,7 @@
+.wpu-user {border-bottom:1px solid #CCC; margin-top:1em;}
+.wpu-id {margin-bottom:0.5em;}
+
+.wpu-pagination {margin:0.5em 0; padding:0;}
+.wpu-pagination a {border:1px solid #CCC; text-decoration:none; margin:2px; padding:2px 5px;}
+.wpu-pagination .wpu-current {border:1px solid #CCC; font-weight:bold; margin:2px; padding:2px 5px;}
+.wpu-pagination .wpu-disabled {border:1px solid #CCC; margin:2px; padding:2px 5px;}
