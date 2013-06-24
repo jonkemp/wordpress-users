@@ -1,4 +1,5 @@
-=== WordPress Users ===
+WordPress Users
+================================
 Contributors: jonkemp
 Tags: user, members, users, directory, profiles, profile
 Requires at least: 2.5.1
@@ -7,11 +8,12 @@ Stable tag: 1.4
 
 Display your WordPress users and their profiles in an index on your site.
 
-== Description ==
+Description
+-------------------------
 
 Display your WordPress users and their profiles in an index on your site. 
 
-**Features**
+### Features
 
 * Works with any page on your site. 
 * Supports Gravatars for profile images.
@@ -25,7 +27,7 @@ Display your WordPress users and their profiles in an index on your site.
 * User links are nofollowed. 
 * Shows recent posts and comments on the profile page.
 
-**Changelog**
+### Changelog
 
 * 1.4: Fixed security issue with potential SQL Injection flaw. Additional bug fixes.
 * 1.3: Updated pagination. Moved page content from the bottom to the top of the page.
@@ -36,7 +38,7 @@ Display your WordPress users and their profiles in an index on your site.
 * 0.2: Code improvements.
 * 0.1
 
-== Installation ==
+## Installation
 
 1. Download and unzip `wordpress-users.zip.`
 1. Upload the `wordpress-users` directory to the `/wp-content/plugins/` directory.
