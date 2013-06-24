@@ -1,5 +1,5 @@
-WordPress Users
-================================
+# WordPress Users
+
 Contributors: jonkemp
 Tags: user, members, users, directory, profiles, profile
 Requires at least: 2.5.1
@@ -8,8 +8,7 @@ Stable tag: 1.4
 
 Display your WordPress users and their profiles in an index on your site.
 
-Description
--------------------------
+## Description
 
 Display your WordPress users and their profiles in an index on your site. 
 
