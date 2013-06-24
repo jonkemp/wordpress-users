@@ -1,13 +1,9 @@
 # WordPress Users
 
-Requires at least: 2.5.1
-Tested up to: 3.2.1
-
 Display your WordPress users and their profiles in an index on your site.
 
-## Description
-
-Display your WordPress users and their profiles in an index on your site. 
+Requires at least: 2.5.1  
+Tested up to: 3.2.1
 
 ### Features
 
