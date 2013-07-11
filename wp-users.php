@@ -28,6 +28,7 @@ add_action('admin_menu', 'wpu_admin_menu');
 add_action('wp_head', 'noindex_users');
 add_action('wp_head', 'wpu_styles');
 add_filter('the_content', 'wpu_get_users', 1);
+add_option('wpu_user_files', 'yes');
 
 function wpu_get_users($content) {  
 	if(is_page(get_option('wpu_page_id'))) {
@@ -322,6 +323,11 @@ function display_user() {
 			}
 		}
 		
+		if(get_option('wpu_user_files')){
+  			$html .= "<h3>Filer</h3>\n";
+			$html .= user_files();
+		}
+		
 		if ($recent_posts) {
 			$html .= "<h3>Recent Posts by $curauth->display_name</h3>\n";
 			$html .= "<ul>\n";
@@ -353,6 +359,43 @@ function display_user() {
 		";
 	}
 }
+
+
+//requires plugin: 
+//Plugin Name: User File Manager
+//Plugin URI: http://www.whereyoursolutionis.com/user-files-plugin/
+function user_files(){
+	$html = '';
+	$upload_dir = wp_upload_dir();
+	$user_id = func_get_arg(0);
+	
+	if(!$user_id){
+	   $user_id = $_GET['uid'];
+	}
+ 	  
+	 if($user_id == 0){
+		return;
+	}
+	
+	
+	$handle = @opendir($upload_dir['basedir'].'/file_uploads/'.$user_id);
+	if(!$handle){
+	  return;
+	}
+	  
+	while (false !== ($file = readdir($handle))) {
+		if ($file!= "." && $file != "..") {
+			$filename = pathinfo($file, PATHINFO_FILENAME);
+			$ext = pathinfo($file, PATHINFO_EXTENSION); 
+			$dLink = '/wp-content/uploads/file_uploads/'.$user_id .'/'. $file;
+	   
+			$html .= '<a href="'.$dLink .'" target="_blank"><img src="'. SetIcon($ext) .'" width="15" /> '. $filename .'</a><br />';	
+		}
+	}
+	
+	return $html;
+}
+
 
 function wpu_recent_comments($uid)
 {
