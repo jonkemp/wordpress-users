@@ -24,10 +24,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     
 */
 
+//localization support
+load_plugin_textdomain('user-list', PLUGINDIR . '/user-list/localization');
+
 add_action('admin_menu', 'wpu_admin_menu');
 add_action('wp_head', 'noindex_users');
 add_action('wp_head', 'wpu_styles');
 add_filter('the_content', 'wpu_get_users', 1);
+add_option('wpu_user_files', 'yes');
 
 function wpu_get_users($content) {  
 	if(is_page(get_option('wpu_page_id'))) {
@@ -83,12 +87,7 @@ function wpu_get_roles()
 function display_user_list() {
 
 	// if $_GET['page'] defined, use it as page number
-	if(isset($_GET['page'])) {
-	    $page = $_GET['page'];
-	} else {
-		// by default we show first page
-		$page = 1;
-	}
+ $page = (get_query_var('page')) ? get_query_var('page') : 1;
 	$limit = get_option('wpu_users_per');
 	
 	// counting the offset
@@ -150,9 +149,9 @@ function getPaginationString($page = 1, $totalitems, $limit = 15, $adjacents = 1
 
 		//previous button
 		if ($page > 1) 
-			$pagination .= "<a href=\"" . get_permalink() . $concat . "page=$prev\">« prev</a>";
+			$pagination .= "<a href=\"" . get_permalink() . $concat . "page=$prev\">&laquo; ".__("prev", "user-list") ."</a>";
 		else
-			$pagination .= "<span class=\"wpu-disabled\">« prev</span>";	
+			$pagination .= "<span class=\"wpu-disabled\">&laquo; ".__("prev", "user-list")."</span>";	
 		
 		//pages	
 		if ($lastpage < 7 + ($adjacents * 2))	//not enough pages to bother breaking it up
@@ -216,9 +215,9 @@ function getPaginationString($page = 1, $totalitems, $limit = 15, $adjacents = 1
 		
 		//next button
 		if ($page < $counter - 1) 
-			$pagination .= "<a href=\"" . get_permalink() . $concat . "page=$next\">next »</a>";
+			$pagination .= "<a href=\"" . get_permalink() . $concat . "page=$next\">".__("next", "user-list")." &raquo;</a>";
 		else
-			$pagination .= "<span class=\"wpu-disabled\">next »</span>";
+			$pagination .= "<span class=\"wpu-disabled\">".__("next", "user-list")." &raquo;</span>";
 		$pagination .= "</div>\n";
 	}
 	
@@ -260,7 +259,7 @@ function get_user_listing($curauth) {
 			$display_gravatar = get_avatar($curauth->user_email, $gravatar_size, $gravatar_type);
 			$html .= "<div class=\"wpu-avatar\"><a href=\"" . get_permalink($post->ID) . $concat . "uid=$curauth->ID\" title=\"$curauth->display_name\">$display_gravatar</a></div>\n";
 		} elseif (get_option('wpu_avatars') == "userphoto") {
-			if(function_exists('userphoto_the_author_photo')) 
+				if(function_exists('userphoto_the_author_photo')) 
 			{
 				$html .= "<div class=\"wpu-avatar\"><a href=\"" . get_permalink($post->ID) . $concat . "uid=$curauth->ID\" title=\"$curauth->display_name\">" . userphoto__get_userphoto($curauth->ID, USERPHOTO_THUMBNAIL_SIZE, "", "", array(), "") . "</a></div>\n";
 			}
@@ -268,13 +267,16 @@ function get_user_listing($curauth) {
 	}
 	$html .= "<div class=\"wpu-id\"><a href=\"" . get_permalink($post->ID) . $concat . "uid=$curauth->ID\" title=\"$curauth->display_name\">$curauth->display_name</a></div>\n";
 	if (get_option('wpu_description_list')) {
-		if ($curauth->description) {
-			if (get_option('wpu_description_limit')) {
-				$desc_limit = get_option('wpu_description_limit');
-				$html .=  "<div class=\"wpu-about\">" . substr($curauth->description, 0, $desc_limit) . " [...]</div>\n";
-			} else {
-				$html .=  "<div class=\"wpu-about\">" . $curauth->description . "</div>\n";
-			}
+			$description = $curauth->description;
+			if ($description) {
+				if (get_option('wpu_description_limit')) {
+						$desc_limit = get_option('wpu_description_limit');
+						$description = substr($description, 0, $desc_limit) . "...";
+				} 
+				
+				$description = preg_replace('/\n/', '<br/>', $description);
+				$html .=  "<div class=\"wpu-about\">" . $description . "</div>\n";
+			
 		}
 	}
 	$html .= "</div>";
@@ -294,13 +296,13 @@ function display_user() {
 		$recent_comments = wpu_recent_comments($uid);
 		$created = date("F jS, Y", strtotime($curauth->user_registered));
 		
-		$html = "<p><a href=" . get_permalink($post->ID) . ">&laquo; Back to " . get_the_title($post->ID) . " page</a></p>\n";
+		$html = "<p><a href=" . get_permalink($post->ID) . ">&laquo; ".__("Back to", "user-list")." ". get_the_title($post->ID) . " ". __("page", "user-list") ."</a></p>\n";
 		
 		$html .= "<h2>$curauth->display_name</h2>\n";
 		
 		if (get_option('wpu_image_profile')) {
 			if(get_option('wpu_avatars') == "gravatars") {
-				$html .= "<p><a href=\"http://en.gravatar.com/\" title=\"Get your own avatar.\">" . get_avatar($curauth->user_email, '96', $gravatar) . "</a></p>\n";
+				$html .= "<p><a href=\"http://en.gravatar.com/\" title=\"".__("Get your own avatar", "user-list")."\">" . get_avatar($curauth->user_email, '96', $gravatar) . "</a></p>\n";
 			} elseif (get_option('wpu_avatars') == "userphoto") {
 				if(function_exists('userphoto_the_author_photo')) 
 				{
@@ -310,20 +312,34 @@ function display_user() {
 		}
 	
 		if ($curauth->user_url && $curauth->user_url != "http://") {
-			$html .= "<p><strong>Website:</strong> <a href=\"$curauth->user_url\" rel=\"nofollow\">$curauth->user_url</a></p>\n";
+			$html .= "<p><strong>".__("Website", "user-list").":</strong> <a href=\"$curauth->user_url\" rel=\"nofollow\">$curauth->user_url</a></p>\n";
 		}
 		
-		$html .= "<p><strong>Joined on:</strong>  " . $created . "</p>";
+		$html .= "<p><strong>".__("Joined on", "user-list").":</strong>  " . $created . "</p>";
 		
 		if (get_option('wpu_description_profile')) {
-			if ($curauth->description) {
-				$html .= "<p><strong>Profile:</strong></p>\n";
-				$html .= "<p>$curauth->description</p>\n";
+			$description = $curauth->description;
+				if ($curauth->description) {
+				$description = preg_replace('/\n/', '<br/>', $description);
+					$html .= "<p><strong>".__("Profile", "user-list").":</strong></p>\n";
+				$html .= "<p>$description</p>\n";
 			}
 		}
+			
+			
+			
+			
+			
+		if(get_option('wpu_user_files')){
+				$html .= "<h3>".__("Files", "user-list")."</h3>\n";
+		  $html .= user_files();
+		}	
+			
+			
+			
 		
 		if ($recent_posts) {
-			$html .= "<h3>Recent Posts by $curauth->display_name</h3>\n";
+			$html .= "<h3>".__("Recent Posts by", "user-list")." $curauth->display_name</h3>\n";
 			$html .= "<ul>\n";
 			foreach( $recent_posts as $post )
 			{
@@ -337,11 +353,11 @@ function display_user() {
 		wp_reset_query();
 		
 		if ($recent_comments) {
-			$html .= "<h3>Recent Comments by $curauth->display_name</h3>\n";
+			$html .= "<h3>".__("Recent Comments by", "user-list")." $curauth->display_name</h3>\n";
 			$html .= "<ul>\n";
 			foreach($recent_comments as $key=>$comment)
 			{
-				$html .= "<li>\"" . $comment->comment_content . "\" on <a href=" . get_permalink($comment->comment_post_ID) . "#comment-" . $comment->comment_ID . ">" . get_the_title($comment->comment_post_ID) . "</a></li>";
+				$html .= "<li>\"" . $comment->comment_content . "\" ".__("on", "user-list")." <a href=" . get_permalink($comment->comment_post_ID) . "#comment-" . $comment->comment_ID . ">" . get_the_title($comment->comment_post_ID) . "</a></li>";
 			}
 			$html .= "</ul>\n";
 		}
@@ -353,6 +369,42 @@ function display_user() {
 		";
 	}
 }
+																
+																
+																
+
+function user_files(){
+	$html = '';
+	$upload_dir = wp_upload_dir();
+	$user_id = func_get_arg(0);
+	
+	if(!$user_id){
+	   $user_id = $_GET['uid'];
+	}
+ 	  
+	 if($user_id == 0){
+		return;
+	}
+	
+	
+	$handle = @opendir($upload_dir['basedir'].'/file_uploads/'.$user_id);
+	if(!$handle){
+	  return;
+	}
+	  
+	while (false !== ($file = readdir($handle))) {
+		if ($file!= "." && $file != "..") {
+			$filename = pathinfo($file, PATHINFO_FILENAME);
+			$ext = pathinfo($file, PATHINFO_EXTENSION); 
+			$dLink = '/wp-content/uploads/file_uploads/'.$user_id .'/'. $file;
+	   
+			$html .= '<a href="'.$dLink .'" target="_blank"><img src="'. SetIcon($ext) .'" /> '. $filename .'</a><br />';	
+		}
+	}
+	
+	return $html;
+}																
+	
 
 function wpu_recent_comments($uid)
 {
@@ -379,13 +431,13 @@ function noindex_users() {
 // 2.0 Feature
 function wpu_styles() {
 	if(is_page(get_option('wpu_page_id'))) {
-		echo '<link href="' . get_bloginfo ( 'wpurl' ) . '/wp-content/plugins/wordpress-users/wpu-styles.css" rel="stylesheet" type="text/css" />
+		echo '<link href="' . get_bloginfo ( 'wpurl' )."/". PLUGINDIR .'/user-list/user-list-styles.css" rel="stylesheet" type="text/css" />
 		';
 	}
 }
 
 function wpu_admin_menu() {  
-	add_options_page('WordPress Users Options', 'WordPress Users', 'manage_options', __FILE__, 'wpu_admin');
+	add_options_page('User List', 'User List', 'manage_options', __FILE__, 'wpu_admin');
 }
 
 function wpu_admin() {
@@ -439,7 +491,7 @@ function wpu_admin() {
 		$desc_limit = $_POST['wpu_description_limit'];
 		update_option('wpu_description_limit', $desc_limit);
 	?>  
-    	<div class="updated"><p><strong><?php _e('Options saved.' ); ?></strong></p></div>
+    	<div class="updated"><p><strong><?php echo __("Options Saved", "user-list"); ?></strong></p></div>
 	<?php  
 	} else {
 		//Normal page display
@@ -463,7 +515,7 @@ function wpu_admin() {
 ?>
 	
 	<div class="wrap">
-		<h2><?php _e('WordPress Users Options') ?></h2>
+		<h2><?php echo __('User List Options', "user-list") ?></h2>
 			
 		<form name="wpu_admin_form" method="post" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>">
 			<input type="hidden" name="wpu_hidden" value="Y">
@@ -474,8 +526,8 @@ function wpu_admin() {
                     <td></td>
                 </tr>
                 <tr>
-                	<td><?php _e("Page ID: " ); ?>&nbsp;</td>
-                	<td colspan="2"><input type="text" name="wpu_page_id" value="<?php echo $pageid; ?>" size="3">&nbsp; ID of the page on which you want to display the user directory.</td>
+                	<td><?php echo __("Page ID", "user-list"); ?>:&nbsp;</td>
+                	<td colspan="2"><input type="text" name="wpu_page_id" value="<?php echo $pageid; ?>" size="3">&nbsp;<?php echo __("ID of the page on which you want to display the user directory.", "user-list")?></td>
                 </tr>
                 <tr>
                 	<td>&nbsp;</td>
@@ -483,8 +535,8 @@ function wpu_admin() {
                     <td></td>
                 </tr>
                 <tr>
-                	<td><?php _e("Users Per Page: " ); ?>&nbsp;</td>
-                	<td colspan="2"><input type="text" name="wpu_users_per" value="<?php echo $usersperpage; ?>" size="3">&nbsp; How many users you want to display at once.</td>
+                	<td><?php echo __("Users Per Page", "user-list"); ?>:&nbsp;</td>
+                	<td colspan="2"><input type="text" name="wpu_users_per" value="<?php echo $usersperpage; ?>" size="3">&nbsp;<?php echo __("How many users you want to display at once.", "user-list")?></td>
                 </tr>
                 <tr>
                 	<td>&nbsp;</td>
@@ -492,8 +544,8 @@ function wpu_admin() {
                     <td></td>
                 </tr>
                 <tr>
-                	<td><?php _e("Noindex User Listings: " ); ?>&nbsp;</td>
-                	<td colspan="2"><input name="wpu_noindex_users" type="checkbox" value="yes" <?php checked('yes', get_option('wpu_noindex_users')); ?> />&nbsp; Insert robots noindex meta tag on user listings to prevent search engine indexing.</td>
+                	<td><?php echo __("Noindex User Listings: ", "user-list"); ?>:&nbsp;</td>
+                	<td colspan="2"><input name="wpu_noindex_users" type="checkbox" value="yes" <?php checked('yes', get_option('wpu_noindex_users')); ?> />&nbsp;<?php echo __("Insert robots noindex meta tag on user listings to prevent search engine indexing.", "user-list")?></td>
                 </tr>
                 <tr>
                 	<td>&nbsp;</td>
@@ -502,12 +554,12 @@ function wpu_admin() {
                 </tr>
                 <tr>
                 	<td colspan="3">
-                    	<h3>Select Which Users to Display</h3>
-                        <p><small><strong>Note:</strong> If no options are selected, all users will be displayed.</small></p>
+                    	<h3><?php echo __("Select Which Users to Display", "user-list")?></h3>
+                        <p><small><strong><?php echo __("Note", "user-list");?>:</strong><?php echo __("If no options are selected, all users will be displayed.", "user-list")?></small></p>
                     </td>
                 </tr>
                 <tr>
-                	<td colspan="3"><input name="wpu_roles_admin" type="checkbox" value="yes" <?php checked('yes', get_option('wpu_roles_admin')); ?> />&nbsp; <?php _e("Administrator" ); ?></td>
+                	<td colspan="3"><input name="wpu_roles_admin" type="checkbox" value="yes" <?php checked('yes', get_option('wpu_roles_admin')); ?> />&nbsp; <?php echo __("Administrator", "user-list"); ?></td>
                 </tr>
                 <tr>
                 	<td>&nbsp;</td>
@@ -515,7 +567,7 @@ function wpu_admin() {
                     <td></td>
                 </tr>
                 <tr>
-                	<td colspan="3"><input name="wpu_roles_editor" type="checkbox" value="yes" <?php checked('yes', get_option('wpu_roles_editor')); ?> />&nbsp; <?php _e("Editors" ); ?></td>
+                	<td colspan="3"><input name="wpu_roles_editor" type="checkbox" value="yes" <?php checked('yes', get_option('wpu_roles_editor')); ?> />&nbsp; <?php echo __("Editors", "user-list"); ?></td>
                 </tr>
                 <tr>
                 	<td>&nbsp;</td>
@@ -523,7 +575,7 @@ function wpu_admin() {
                     <td></td>
                 </tr>
                 <tr>
-                	<td colspan="3"><input name="wpu_roles_author" type="checkbox" value="yes" <?php checked('yes', get_option('wpu_roles_author')); ?> />&nbsp; <?php _e("Authors" ); ?></td>
+                	<td colspan="3"><input name="wpu_roles_author" type="checkbox" value="yes" <?php checked('yes', get_option('wpu_roles_author')); ?> />&nbsp; <?php echo __("Authors", "user-list"); ?></td>
                 </tr>
                 <tr>
                 	<td>&nbsp;</td>
@@ -531,7 +583,7 @@ function wpu_admin() {
                     <td></td>
                 </tr>
                 <tr>
-                	<td colspan="3"><input name="wpu_roles_contributor" type="checkbox" value="yes" <?php checked('yes', get_option('wpu_roles_contributor')); ?> />&nbsp; <?php _e("Contribtors" ); ?></td>
+                	<td colspan="3"><input name="wpu_roles_contributor" type="checkbox" value="yes" <?php checked('yes', get_option('wpu_roles_contributor')); ?> />&nbsp; <?php echo __("Contribtors", "user-list"); ?></td>
                 </tr>
                 <tr>
                 	<td>&nbsp;</td>
@@ -539,7 +591,7 @@ function wpu_admin() {
                     <td></td>
                 </tr>
                 <tr>
-                	<td colspan="3"><input name="wpu_roles_subscriber" type="checkbox" value="yes" <?php checked('yes', get_option('wpu_roles_subscriber')); ?> />&nbsp; <?php _e("Subscribers" ); ?></td>
+                	<td colspan="3"><input name="wpu_roles_subscriber" type="checkbox" value="yes" <?php checked('yes', get_option('wpu_roles_subscriber')); ?> />&nbsp; <?php echo __("Subscribers", "user-list"); ?></td>
                 </tr>
                 <tr>
                 	<td>&nbsp;</td>
@@ -547,18 +599,10 @@ function wpu_admin() {
                     <td></td>
                 </tr>
                 <tr>
-                	<td colspan="3"><h3>Profile Options</h3></td>
+                	<td colspan="3"><h3><?php echo __("Profile Options", "user-list")?></h3></td>
                 </tr>
                 <tr>
-                	<td colspan="3"><input name="wpu_image_list" type="checkbox" value="yes" <?php checked('yes', get_option('wpu_image_list')); ?> />&nbsp; <?php _e("Display user images on directory page." ); ?></td>
-                </tr>
-                <tr>
-                	<td>&nbsp;</td>
-                	<td>&nbsp;</td>
-                    <td></td>
-                </tr>
-                <tr>
-                	<td colspan="3"><input name="wpu_description_list" type="checkbox" value="yes" <?php checked('yes', get_option('wpu_description_list')); ?> />&nbsp; <?php _e("Display user descriptions on directory page." ); ?></td>
+                	<td colspan="3"><input name="wpu_image_list" type="checkbox" value="yes" <?php checked('yes', get_option('wpu_image_list')); ?> />&nbsp; <?php echo __("Display user images on directory page.", "user-list"); ?></td>
                 </tr>
                 <tr>
                 	<td>&nbsp;</td>
@@ -566,20 +610,7 @@ function wpu_admin() {
                     <td></td>
                 </tr>
                 <tr>
-                	<td>&nbsp;</td>
-                	<td>&nbsp;</td>
-                    <td></td>
-                </tr>
-                <tr>
-                	<td colspan="3"><input name="wpu_image_profile" type="checkbox" value="yes" <?php checked('yes', get_option('wpu_image_profile')); ?> />&nbsp; <?php _e("Display user images on profile page." ); ?></td>
-                </tr>
-                <tr>
-                	<td>&nbsp;</td>
-                	<td>&nbsp;</td>
-                    <td></td>
-                </tr>
-                <tr>
-                	<td colspan="3"><input name="wpu_description_profile" type="checkbox" value="yes" <?php checked('yes', get_option('wpu_description_profile')); ?> />&nbsp; <?php _e("Display user descriptions on profile page." ); ?></td>
+                	<td colspan="3"><input name="wpu_description_list" type="checkbox" value="yes" <?php checked('yes', get_option('wpu_description_list')); ?> />&nbsp; <?php echo __("Display user descriptions on directory page.", "user-list"); ?></td>
                 </tr>
                 <tr>
                 	<td>&nbsp;</td>
@@ -592,11 +623,32 @@ function wpu_admin() {
                     <td></td>
                 </tr>
                 <tr>
-                	<td colspan="3"><input type="text" name="wpu_description_limit" value="<?php echo $desc_limit; ?>" size="3">&nbsp; <?php _e("Number of characters to display of user description on the directory page." ); ?></td>
+                	<td colspan="3"><input name="wpu_image_profile" type="checkbox" value="yes" <?php checked('yes', get_option('wpu_image_profile')); ?> />&nbsp; <?php echo __("Display user images on profile page.", "user-list"); ?></td>
+                </tr>
+                <tr>
+                	<td>&nbsp;</td>
+                	<td>&nbsp;</td>
+                    <td></td>
+                </tr>
+                <tr>
+                	<td colspan="3"><input name="wpu_description_profile" type="checkbox" value="yes" <?php checked('yes', get_option('wpu_description_profile')); ?> />&nbsp; <?php echo __("Display user descriptions on profile page.", "user-list"); ?></td>
+                </tr>
+                <tr>
+                	<td>&nbsp;</td>
+                	<td>&nbsp;</td>
+                    <td></td>
+                </tr>
+                <tr>
+                	<td>&nbsp;</td>
+                	<td>&nbsp;</td>
+                    <td></td>
+                </tr>
+                <tr>
+                	<td colspan="3"><input type="text" name="wpu_description_limit" value="<?php echo $desc_limit; ?>" size="3">&nbsp; <?php echo __("Number of characters to display of user description on the directory page.", "user-list"); ?></td>
                 </tr>
                 <tr>
                 	<td colspan="3">
-                        <p><small><strong>Note:</strong> If no limit is specified, entire user description will be displayed.</small></p>
+                        <p><small><strong><?php echo __("Note", "user-list");?>:</strong> <?php echo __("If no limit is specified, entire user description will be displayed.", "user-list"); ?></small></p>
                     </td>
                 </tr>
                 <tr>
@@ -605,15 +657,15 @@ function wpu_admin() {
                     <td></td>
                 </tr>
                 <tr>
-                	<td colspan="3"><h3>Avatar Options</h3></td>
+                	<td colspan="3"><h3><?php echo __("Avatar Options", "user-list");?></h3></td>
                 </tr>
                 <tr>
-                	<td><?php _e("Avatar Type: " ); ?></td>
-                	<td colspan="2"><input id="wpu_avatars_gravatars" type="radio" name="wpu_avatars" value="gravatars" <?php checked('gravatars', get_option('wpu_avatars')); ?> /> Gravatars</td>
+                	<td><?php echo __("Avatar Type", "user-list"); ?></td>
+                	<td colspan="2"><input id="wpu_avatars_gravatars" type="radio" name="wpu_avatars" value="gravatars" <?php checked('gravatars', get_option('wpu_avatars')); ?> /> <?php echo __("Gravatars", "user-list"); ?></td>
                 </tr>
                 <tr>
                 	<td></td>
-                	<td colspan="2"><input id="wpu_avatars_userphoto" type="radio" name="wpu_avatars" value="userphoto" <?php checked('userphoto', get_option('wpu_avatars')); ?> /> User Photo</td>
+                	<td colspan="2"><input id="wpu_avatars_userphoto" type="radio" name="wpu_avatars" value="userphoto" <?php checked('userphoto', get_option('wpu_avatars')); ?> /> <?php echo __("User Photo", "user-list");?></td>
                 </tr>
                 <tr>
                 	<td>&nbsp;</td>
@@ -621,7 +673,7 @@ function wpu_admin() {
                     <td></td>
                 </tr>
                 <tr>
-                	<td colspan="3"><strong>Gravatar Options:</strong></td>
+                	<td colspan="3"><strong><?php echo __("Gravatar Options", "user-list");?>:</strong></td>
                 </tr>
                 <tr>
                 	<td>&nbsp;</td>
@@ -629,8 +681,8 @@ function wpu_admin() {
                     <td></td>
                 </tr>
                 <tr>
-                	<td><?php _e("Gravatar Type: " ); ?>&nbsp;</td>
-                	<td><input type="text" name="wpu_gravatar_type" value="<?php echo $gravatar_type; ?>" size="15">&nbsp; Gravatar type - ex. mystery, blank, gravatar_default, identicon, wavatar, monsterid</td>
+                	<td><?php echo __("Gravatar Type", "user-list"); ?>:&nbsp;</td>
+                	<td><input type="text" name="wpu_gravatar_type" value="<?php echo $gravatar_type; ?>" size="15">&nbsp; <?php echo __("Gravatar type - ex. mystery, blank, gravatar_default, identicon, wavatar, monsterid", "user-list");?></td>
                 </tr>
                 <tr>
                 	<td>&nbsp;</td>
@@ -638,11 +690,11 @@ function wpu_admin() {
                     <td></td>
                 </tr>
                 <tr>
-                	<td><?php _e("Gravatar Size: " ); ?>&nbsp;</td>
-                	<td><input type="text" name="wpu_gravatar_size" value="<?php echo $gravatar_size; ?>" size="2"> px &nbsp; Size of gravatar in the user listings.</td>
+                	<td><?php echo __("Gravatar Size", "user-list"); ?>:&nbsp;</td>
+                	<td><input type="text" name="wpu_gravatar_size" value="<?php echo $gravatar_size; ?>" size="2"> <?php echo __("px Size of gravatar in the user listings.", "user-list");?></td>
                 </tr>
                 <tr>
-                	<td colspan="3"><p class="submit"><input type="submit" name="Submit" value="<?php _e('Update Options') ?>" /></p></td>
+                	<td colspan="3"><p class="submit"><input type="submit" name="Submit" value="<?php echo __("Update Options", "user-list"); ?>" /></p></td>
                 </tr>
             </table>
 		</form>
