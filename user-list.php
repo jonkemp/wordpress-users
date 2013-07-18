@@ -83,22 +83,34 @@ function wpu_get_roles(){
 
 function display_user_list() {
     global $wpdb;
-    $page = get_query_var('page');
+    $onPage = get_query_var('page');
     $limit = get_option('wpu_users_per');
+    $adjacents = get_option('wpu_pagination_adjacents');
     
-    if(!$page) $page = 1;
-
-    //counting the offset
-    $offset = ($page - 1) * $limit;
-
-    // Get the authors from the database ordered by user nicename
+    
+    //get all user roles to be shown
     $meta_values = wpu_get_roles();
+    
+    //how many rows we have in database
+    $totalitems = $wpdb->get_var("SELECT COUNT(ID) FROM $wpdb->users WHERE ID = ANY (SELECT user_id FROM $wpdb->usermeta WHERE $meta_values)");
+    $totalPages = ceil($totalitems / $limit);
+    
+    //if the user tryes to manipulate qury, set min and max..
+    if(!$onPage || $onPage < 1){
+        $onPage = 1;
+    }elseif($onPage > $totalPages){
+        $onPage = $totalPages;
+    }
+    
+    
+    //counting the offset
+    $offset = ($onPage - 1) * $limit;
 
+    //get the authors from the database ordered by user nicename
     $query = "SELECT $wpdb->users.ID, $wpdb->users.user_nicename FROM $wpdb->users INNER JOIN $wpdb->usermeta ON $wpdb->users.ID = $wpdb->usermeta.user_id WHERE $meta_values ORDER BY $wpdb->users.user_nicename LIMIT $offset, $limit";
     $author_ids = $wpdb->get_results($query);
 
-
-    // Loop through each author
+    //loop through each author
     foreach($author_ids as $author) {
         // Get user data
         $curauth = get_userdata($author->ID);
@@ -106,10 +118,7 @@ function display_user_list() {
     }
 
     //pagination string
-    //how many rows we have in database
-    $totalitems = $wpdb->get_var("SELECT COUNT(ID) FROM $wpdb->users WHERE ID = ANY (SELECT user_id FROM $wpdb->usermeta WHERE $meta_values)");
-    $adjacents = get_option('wpu_pagination_adjacents');
-    $html .= getPaginationString($totalitems, $limit, $page, $adjacents);
+    $html .= getPaginationString($totalitems, $limit, $onPage, $adjacents);
     
     echo $html;
 }
