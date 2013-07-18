@@ -1,0 +1,220 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: user-list\n"
+"POT-Creation-Date: 2013-07-18 14:30+0100\n"
+"PO-Revision-Date: 2013-07-18 14:30+0100\n"
+"Last-Translator: \n"
+"Language-Team:  <ivan82@gmail.com>\n"
+"Language: English\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: /Users/ivan/NetBeansProjects/Wordpress/wp-content/"
+"plugins/user-list\n"
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:172
+msgid "Back to"
+msgstr "Tillbaka till"
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:172
+msgid "page"
+msgstr "sida"
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:178
+msgid "Get your own avatar"
+msgstr "Hämta egen avatar"
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:185
+msgid "Website"
+msgstr "Webbsida"
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:188
+msgid "Joined on"
+msgstr "Gått med"
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:194
+msgid "Profile"
+msgstr "Profil"
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:200
+msgid "Files"
+msgstr "Filer"
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:208
+msgid "Recent Posts by"
+msgstr "Senaste inlägget av"
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:221
+msgid "Recent Comments by"
+msgstr "Senaste kommentarerna från"
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:225
+msgid "on"
+msgstr "på"
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:358
+msgid "Options Saved"
+msgstr "Alternativen sparade"
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:384
+msgid "User List Options"
+msgstr "Användarlista Alternativ"
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:387
+msgid "Page ID"
+msgstr "Sida ID"
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:388
+msgid "ID of the page on which you want to display the user directory."
+msgstr "ID på den sida där du vill visa den egna användarlistan."
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:391
+msgid "Users Per Page"
+msgstr "Användare per sida"
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:392
+msgid "How many users you want to display at once."
+msgstr "Hur många användare vill du visa per sida."
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:395
+msgid "Pagination Adjacents"
+msgstr "Paginering intilliggande"
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:396
+msgid "Pagination adjacents size"
+msgstr "Paginering, intilliggande storlek"
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:399
+msgid "Noindex User Listings"
+msgstr "Ej index-lista"
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:400
+msgid ""
+"Insert robots noindex meta tag on user listings to prevent search engine "
+"indexing."
+msgstr ""
+"Infoga robotar metataggen noindex på Användar listor för att förhindra "
+"sökmotor indexering."
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:406
+msgid "Avatar Options"
+msgstr "Avatar alternativ"
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:409
+msgid "Avatar Type"
+msgstr "Avatar typ"
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:410
+msgid "Gravatars"
+msgstr "Gravatars"
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:414
+msgid "User Photo"
+msgstr "Användarbild"
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:420
+msgid "Gravatar Options"
+msgstr "Gravatar alternativ"
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:423
+msgid "Gravatar Type"
+msgstr "Gravatar typ"
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:424
+msgid ""
+"Gravatar type - ex. mystery, blank, gravatar_default, identicon, wavatar, "
+"monsterid"
+msgstr ""
+"Gravatar typ - ex. mystery, blank, gravatar_default, identicon, wavatar, "
+"monsterid"
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:427
+msgid "Gravatar Size"
+msgstr "Gravatar storlek"
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:428
+msgid "px Size of gravatar in the user listings."
+msgstr "px storlek på gravatar  listorna."
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:437
+msgid "Select Which Users to Display"
+msgstr "Välj vilka användare som ska visas"
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:438
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:488
+msgid "Note"
+msgstr "Anteckning"
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:438
+msgid "If no options are selected, all users will be displayed."
+msgstr "Om inga alternativ har valts, kommer alla användare att visas."
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:442
+msgid "Administrator"
+msgstr "Administrator"
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:445
+msgid "Editors"
+msgstr "Redaktörer"
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:448
+msgid "Authors"
+msgstr "Författe"
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:451
+msgid "Contribtors"
+msgstr "Bidragsgivare"
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:454
+msgid "Subscribers"
+msgstr "Prenumeranter"
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:460
+msgid "Profile Options"
+msgstr "Profil alternativ"
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:463
+msgid "Display user images on directory page."
+msgstr "Visa användarens bilder på katalog sida."
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:466
+msgid "Display user descriptions on directory page."
+msgstr "Visa användarens beskrivningar på katalog sida."
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:472
+msgid "Display user images on profile page."
+msgstr "Visa användarens bilder på profilsidan."
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:475
+msgid "Display user descriptions on profile page."
+msgstr "Visa användarens beskrivningar på profilsidan."
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:478
+msgid "Display user files on profile page."
+msgstr "Visa användarens bilder på profilsidan."
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:484
+msgid ""
+"Number of characters to display of user description on the directory page."
+msgstr "Antal tecken som ska visas på användarbeskrivningen."
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:488
+msgid "If no limit is specified, entire user description will be displayed."
+msgstr "Om inga alternativ har valts, kommer alla användare att visas."
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:493
+msgid "Update Options"
+msgstr "Uppdatera alternativ"
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:524
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:526
+msgid "prev"
+msgstr "förgående"
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:555
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:557
+msgid "next"
+msgstr "nästa"
