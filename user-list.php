@@ -215,7 +215,6 @@ function display_user() {
     }
 
     if(get_option('wpu_user_files') == 'yes'){
-        $html .= "<h3>".__("Files", "user-list")."</h3>\n";
         $html .= get_user_files();
     }	
 
@@ -271,6 +270,8 @@ function get_user_files(){
     if(!$handle){
       return;
     }
+    
+    $html .= "<h3>".__("Files", "user-list")."</h3>\n";
 
     while (false !== ($file = readdir($handle))) {
         if ($file!= "." && $file != "..") {
@@ -300,7 +301,7 @@ function wpu_recent_comments($uid){
 
 
 function noindex_users() {
-    if(is_page(get_option('wpu_page_id')) && get_option('wpu_noindex_users') == 'yes' && $_GET['uid'] == "") {
+    if(is_page(get_option('wpu_page_id')) && get_option('wpu_noindex_users') == 'yes') {
         echo '<meta name="robots" content="noindex, follow"/>';
     }
 }
