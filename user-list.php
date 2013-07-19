@@ -160,6 +160,12 @@ function get_user_listing($curauth) {
             $html .=  "<div class=\"wpu-about\">" . $description . "</div>\n";
         }
     }
+    
+    //edit profile link
+    if (get_current_user_id() == $curauth->ID) {
+        $html .= "<br /><a href=\"/wp-admin/profile.php\">".__("Edit profile", "user-list"). "</a>";
+    }
+    
     $html .= "</div>";
     return $html;
 }
