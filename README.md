@@ -1,4 +1,4 @@
-# WordPress Users
+# User List
 
 Display your WordPress users and their profiles in an index on your site.
 
