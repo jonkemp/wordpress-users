@@ -461,7 +461,7 @@ function wpu_admin() {
     </td>
 </tr>
 <tr>
-    <td><input name="wpu_roles_admin" type="checkbox" value="yes" <?php checked('yes', get_option('wpu_roles_admin')); ?> />&nbsp; <?php echo __("Administrator", "user-list"); ?></td>
+    <td><input name="wpu_roles_admin" type="checkbox" value="yes" <?php checked('yes', get_option('wpu_roles_admin')); ?> />&nbsp; <?php echo __("Administrators", "user-list"); ?></td>
 </tr>
 <tr>
     <td><input name="wpu_roles_editor" type="checkbox" value="yes" <?php checked('yes', get_option('wpu_roles_editor')); ?> />&nbsp; <?php echo __("Editors", "user-list"); ?></td>
