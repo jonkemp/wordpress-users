@@ -173,71 +173,78 @@ function display_user() {
         $curauth = get_userdata($uid);
     }
 
-    if ( $curauth ) {
-        $recent_posts = get_posts( array( 'numberposts' => 10, 'author' => $curauth->ID ) );
-        $recent_comments = wpu_recent_comments($uid);
-        $created = date("F jS, Y", strtotime($curauth->user_registered));
-
-        $html = "<p><a href=" . get_permalink($post->ID) . ">&laquo; ".__("Back to", "user-list")." ". get_the_title($post->ID) . " ". __("page", "user-list") ."</a></p>\n";
-
-        $html .= "<h2>$curauth->display_name</h2>\n";
-
-        if (get_option('wpu_image_profile')) {
-            if(get_option('wpu_avatars') == "gravatars") {
-                $html .= "<p><a href=\"http://en.gravatar.com/\" title=\"".__("Get your own avatar", "user-list")."\">" . get_avatar($curauth->user_email, '96', $gravatar) . "</a></p>\n";
-            } elseif (get_option('wpu_avatars') == "userphoto" && function_exists('userphoto_the_author_photo')) {
-                $html .= "<p>" . userphoto__get_userphoto($curauth->ID, USERPHOTO_FULL_SIZE, "", "", array(), "") . "</p>\n";
-            }
-        }
-
-        if ($curauth->user_url && $curauth->user_url != "http://") {
-            $html .= "<p><strong>".__("Website", "user-list").":</strong> <a href=\"$curauth->user_url\" rel=\"nofollow\">$curauth->user_url</a></p>\n";
-        }
-
-        $html .= "<p><strong>".__("Joined on", "user-list").":</strong>  " . $created . "</p>";
-
-        if (get_option('wpu_description_profile')) {
-            $description = $curauth->description;
-            if ($curauth->description) {
-                $description = preg_replace('/\n/', '<br/>', $description);
-                $html .= "<p><strong>".__("Profile", "user-list").":</strong></p>\n";
-                $html .= "<p>$description</p>\n";
-            }
-        }
-
-        if(get_option('wpu_user_files') == 'yes'){
-            $html .= "<h3>".__("Files", "user-list")."</h3>\n";
-            $html .= get_user_files();
-        }	
-
-
-
-
-        if ($recent_posts) {
-            $html .= "<h3>".__("Recent Posts by", "user-list")." $curauth->display_name</h3>\n";
-            $html .= "<ul>\n";
-            foreach( $recent_posts as $post )
-            {
-                setup_postdata($post);
-                $html .= "<li><a href=" . get_permalink($post->ID) . ">" . $post->post_title . "</a></li>";
-            }
-            $html .= "</ul>\n";
-        }
-
-        wp_reset_query();
-
-        if ($recent_comments) {
-            $html .= "<h3>".__("Recent Comments by", "user-list")." $curauth->display_name</h3>\n";
-            $html .= "<ul>\n";
-            foreach($recent_comments as $key=>$comment)
-            {
-                $html .= "<li>\"" . $comment->comment_content . "\" ".__("on", "user-list")." <a href=" . get_permalink($comment->comment_post_ID) . "#comment-" . $comment->comment_ID . ">" . get_the_title($comment->comment_post_ID) . "</a></li>";
-            }
-            $html .= "</ul>\n";
-        }
-
-    echo "<div id=\"wpu-profile\">" . $html . "</div>";
+    if (!$curauth) {
+        return;
     }
+    
+    $recent_posts = get_posts( array( 'numberposts' => 10, 'author' => $curauth->ID ) );
+    $recent_comments = wpu_recent_comments($uid);
+    $created = date("F jS, Y", strtotime($curauth->user_registered));
+
+    $html = "<p><a href=" . get_permalink($post->ID) . ">&laquo; ".__("Back to", "user-list")." ". get_the_title($post->ID) . " ". __("page", "user-list") ."</a></p>\n";
+
+    $html .= "<h2>$curauth->display_name</h2>\n";
+
+    if (get_option('wpu_image_profile')) {
+        if(get_option('wpu_avatars') == "gravatars") {
+            $html .= "<p><a href=\"http://en.gravatar.com/\" title=\"".__("Get your own avatar", "user-list")."\">" . get_avatar($curauth->user_email, '96', $gravatar) . "</a></p>\n";
+        } elseif (get_option('wpu_avatars') == "userphoto" && function_exists('userphoto_the_author_photo')) {
+            $html .= "<p>" . userphoto__get_userphoto($curauth->ID, USERPHOTO_FULL_SIZE, "", "", array(), "") . "</p>\n";
+        }
+    }
+
+    if ($curauth->user_url && $curauth->user_url != "http://") {
+        $html .= "<p><strong>".__("Website", "user-list").":</strong> <a href=\"$curauth->user_url\" rel=\"nofollow\">$curauth->user_url</a></p>\n";
+    }
+
+    $html .= "<p><strong>".__("Joined on", "user-list").":</strong>  " . $created . "</p>";
+
+    if (get_option('wpu_description_profile')) {
+        $description = $curauth->description;
+        if ($curauth->description) {
+            $description = preg_replace('/\n/', '<br/>', $description);
+            $html .= "<p><strong>".__("Profile", "user-list").":</strong></p>\n";
+            $html .= "<p>$description</p>\n";
+        }
+    }
+
+    if(get_option('wpu_user_files') == 'yes'){
+        $html .= "<h3>".__("Files", "user-list")."</h3>\n";
+        $html .= get_user_files();
+    }	
+
+
+
+
+    if ($recent_posts) {
+        $html .= "<h3>".__("Recent Posts by", "user-list")." $curauth->display_name</h3>\n";
+        $html .= "<ul>\n";
+        foreach( $recent_posts as $post )
+        {
+            setup_postdata($post);
+            $html .= "<li><a href=" . get_permalink($post->ID) . ">" . $post->post_title . "</a></li>";
+        }
+        $html .= "</ul>\n";
+    }
+
+    wp_reset_query();
+
+    if ($recent_comments) {
+        $html .= "<h3>".__("Recent Comments by", "user-list")." $curauth->display_name</h3>\n";
+        $html .= "<ul>\n";
+        foreach($recent_comments as $key=>$comment)
+        {
+            $html .= "<li>\"" . $comment->comment_content . "\" ".__("on", "user-list")." <a href=" . get_permalink($comment->comment_post_ID) . "#comment-" . $comment->comment_ID . ">" . get_the_title($comment->comment_post_ID) . "</a></li>";
+        }
+        $html .= "</ul>\n";
+    }
+
+    if (get_current_user_id() == $uid) {
+        $html .= "<br /><a href=\"/wp-admin/profile.php\">".__("Edit profile", "user-list"). "</a>";
+    }
+  
+    echo "<div id=\"wpu-profile\">" . $html . "</div>";
+    
 }															
 
 function get_user_files(){
