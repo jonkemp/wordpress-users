@@ -3,13 +3,15 @@
 Display your WordPress users and their profiles in an index on your site.
 
 Requires at least: 2.5.1  
-Tested up to: 3.2.1
+Tested up to: 3.5.2
 
 ### Features
 
+* Choose how to display user links, by ID or Display Name
 * Works with any page on your site. 
 * Supports Gravatars for profile images.
-* Also, supports the "User Photo" plugin for profile images. 
+* Supports the "User Photo" plugin for profile images. 
+* Supports the "User Files" plugin for user files.
 * Display users according to roles.
 * Add "noindex" to the index pages to prevent search engines from indexing them. 
 * Plenty of hooks to style your directory yourself with CSS. 
@@ -21,6 +23,7 @@ Tested up to: 3.2.1
 
 ### Changelog
 
+* 1.5.1: Added functionality, how to display user links, by ID or Display Name
 * 1.5: Plugin name has changed to User List. Added localization support and swedish translations. New pagination. Added plugin support for User Files, code cleanup and paging bug fix.
 * 1.4: Fixed security issue with potential SQL Injection flaw. Additional bug fixes.
 * 1.3: Updated pagination. Moved page content from the bottom to the top of the page.

@@ -3,7 +3,7 @@
 Plugin Name: User List
 Plugin URI: http://kempwire.com/wordpress-user-list-plugin
 Description: Display your WordPress users, profiles, avatars, images and uploaded files.
-Version: 1.5
+Version: 1.5.1
 Author: Jonathan Kemp, Ivan Jakesevic
 Author URI: http://kempwire.com/
 
@@ -109,12 +109,13 @@ function display_user_list() {
     //get the authors from the database ordered by user nicename
     $query = "SELECT $wpdb->users.ID, $wpdb->users.user_nicename FROM $wpdb->users INNER JOIN $wpdb->usermeta ON $wpdb->users.ID = $wpdb->usermeta.user_id WHERE $meta_values ORDER BY $wpdb->users.user_nicename LIMIT $offset, $limit";
     $author_ids = $wpdb->get_results($query);
-
+    
+    $userIdAsName = get_option('wpu_user_id_as_name');
     //loop through each author
     foreach($author_ids as $author) {
         // Get user data
         $curauth = get_userdata($author->ID);
-        $html .= get_user_listing($curauth);
+        $html .= get_user_listing($curauth, $userIdAsName);
     }
 
     //pagination string
@@ -123,10 +124,12 @@ function display_user_list() {
     echo $html;
 }
 
-function get_user_listing($curauth) {  
+function get_user_listing($curauth, $userIdAsName) {  
     global $post;
     $concat = wpu_concat();
-
+    $link = get_permalink($post->ID) . $concat . "uid=";
+    $link .= $userIdAsName == 'yes' ? $curauth->display_name : $curauth->ID;
+    
     $html = "<div class=\"wpu-user\">\n";
     
     //image
@@ -136,16 +139,16 @@ function get_user_listing($curauth) {
             $gravatar_type = get_option('wpu_gravatar_type');
             $gravatar_size = get_option('wpu_gravatar_size');
             $display_gravatar = get_avatar($curauth->user_email, $gravatar_size, $gravatar_type);
-            $html .= "<div class=\"wpu-avatar\"><a href=\"" . get_permalink($post->ID) . $concat . "uid=$curauth->ID\" title=\"$curauth->display_name\">$display_gravatar</a></div>\n";
+            $html .= "<div class=\"wpu-avatar\"><a href=\"$link\" title=\"$curauth->display_name\">$display_gravatar</a></div>\n";
       
         //user photo
         }elseif (get_option('wpu_avatars') == "userphoto" && function_exists('userphoto_the_author_photo')) {
-            $html .= "<div class=\"wpu-avatar\"><a href=\"" . get_permalink($post->ID) . $concat . "uid=$curauth->ID\" title=\"$curauth->display_name\">" . userphoto__get_userphoto($curauth->ID, USERPHOTO_THUMBNAIL_SIZE, "", "", array(), "") . "</a></div>\n";
+            $html .= "<div class=\"wpu-avatar\"><a href=\"$link\" title=\"$curauth->display_name\">" . userphoto__get_userphoto($curauth->ID, USERPHOTO_THUMBNAIL_SIZE, "", "", array(), "") . "</a></div>\n";
         }
     }
     
     //name
-    $html .= "<div class=\"wpu-id\"><a href=\"" . get_permalink($post->ID) . $concat . "uid=$curauth->ID\" title=\"$curauth->display_name\">$curauth->display_name</a></div>\n";
+    $html .= "<div class=\"wpu-id\"><a href=\"$link\" title=\"$curauth->display_name\">$curauth->display_name</a></div>\n";
     
     //description
     if (get_option('wpu_description_list')) {
@@ -170,12 +173,30 @@ function get_user_listing($curauth) {
     return $html;
 }
 
+function get_userid_by_display_name($display_name){
+    global $wpdb;
+    
+    $query = $wpdb->prepare("SELECT $wpdb->users.ID FROM $wpdb->users  WHERE $wpdb->users.display_name = '%s' LIMIT 1", $display_name);
+    return $wpdb->get_var($query);
+}
+
+function get_userid(){
+    if (isset($_GET['uid'])) {
+        $uid = $_GET['uid'];
+        
+        $userIdAsName = get_option('wpu_user_id_as_name');
+        if($userIdAsName == 'yes'){ 
+            $uid = get_userid_by_display_name($uid); 
+        }
+        return  $uid;
+    }
+}
 
 function display_user() {  
     global $post;
 
     if (isset($_GET['uid'])) {
-        $uid = $_GET['uid'];
+        $uid = get_userid();
         $curauth = get_userdata($uid);
     }
 
@@ -215,7 +236,7 @@ function display_user() {
     }
 
     if(get_option('wpu_user_files') == 'yes'){
-        $html .= get_user_files();
+        $html .= get_user_files($uid);
     }	
 
 
@@ -258,7 +279,7 @@ function get_user_files(){
     $user_id = func_get_arg(0);
 
     if(!$user_id){
-       $user_id = $_GET['uid'];
+       $user_id = get_userid();
     }
 
     if($user_id == 0){
@@ -374,6 +395,9 @@ function wpu_admin() {
         $adjacents = $_POST['wpu_pagination_adjacents'];
         update_option('wpu_pagination_adjacents', $adjacents);
         
+        $useridbyname = $_POST['wpu_user_id_as_name'];
+        update_option('wpu_user_id_as_name', $useridbyname);
+        
         ?>  
         
         
@@ -421,6 +445,10 @@ function wpu_admin() {
 <tr>
     <td><?php echo __("Noindex User Listings", "user-list");?>:&nbsp;</td>
     <td colspan="2"><input name="wpu_noindex_users" type="checkbox" value="yes" <?php checked('yes', $noindex_users); ?> />&nbsp;<?php echo __("Insert robots noindex meta tag on user listings to prevent search engine indexing.", "user-list")?></td>
+</tr>
+<tr>
+    <td><?php echo __("Use user \"Display name\" for links", "user-list"); ?></td>
+    <td colspan="2"><input name="wpu_user_id_as_name" type="checkbox" value="yes" <?php checked('yes', get_option('wpu_user_id_as_name')); ?> /></td>
 </tr>
 <tr>
     <td colspan="3">&nbsp;</td>

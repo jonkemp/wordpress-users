@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: user-list\n"
-"POT-Creation-Date: 2013-07-19 10:42+0100\n"
-"PO-Revision-Date: 2013-07-19 10:42+0100\n"
+"POT-Creation-Date: 2013-07-21 22:21+0100\n"
+"PO-Revision-Date: 2013-07-21 22:21+0100\n"
 "Last-Translator: \n"
 "Language-Team:  <ivan82@gmail.com>\n"
 "Language: English\n"
@@ -15,207 +15,211 @@ msgstr ""
 "X-Poedit-SearchPath-0: /Users/ivan/NetBeansProjects/Wordpress/wp-content/"
 "plugins/user-list\n"
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:166
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:249
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:169
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:269
 msgid "Edit profile"
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:190
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:211
 msgid "Back to"
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:190
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:211
 msgid "page"
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:196
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:217
 msgid "Get your own avatar"
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:203
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:224
 msgid "Website"
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:206
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:227
 msgid "Joined on"
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:212
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:233
 msgid "Profile"
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:218
-msgid "Files"
-msgstr ""
-
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:226
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:246
 msgid "Recent Posts by"
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:239
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:259
 msgid "Recent Comments by"
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:243
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:263
 msgid "on"
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:380
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:295
+msgid "Files"
+msgstr ""
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:405
 msgid "Options Saved"
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:406
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:431
 msgid "User List Options"
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:409
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:434
 msgid "Page ID"
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:410
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:435
 msgid "ID of the page on which you want to display the user directory."
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:413
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:438
 msgid "Users Per Page"
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:414
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:439
 msgid "How many users you want to display at once."
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:417
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:442
 msgid "Pagination Adjacents"
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:418
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:443
 msgid "Pagination adjacents size"
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:421
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:446
 msgid "Noindex User Listings"
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:422
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:447
 msgid ""
 "Insert robots noindex meta tag on user listings to prevent search engine "
 "indexing."
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:428
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:450
+msgid "Use user \"Display name\" for links"
+msgstr ""
+
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:457
 msgid "Avatar Options"
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:431
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:460
 msgid "Avatar Type"
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:432
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:461
 msgid "Gravatars"
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:436
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:465
 msgid "User Photo"
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:442
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:471
 msgid "Gravatar Options"
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:445
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:474
 msgid "Gravatar Type"
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:446
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:475
 msgid ""
 "Gravatar type - ex. mystery, blank, gravatar_default, identicon, wavatar, "
 "monsterid"
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:449
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:478
 msgid "Gravatar Size"
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:450
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:479
 msgid "px Size of gravatar in the user listings."
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:459
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:488
 msgid "Select Which Users to Display"
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:460
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:510
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:489
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:539
 msgid "Note"
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:460
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:489
 msgid "If no options are selected, all users will be displayed."
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:464
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:493
 msgid "Administrators"
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:467
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:496
 msgid "Editors"
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:470
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:499
 msgid "Authors"
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:473
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:502
 msgid "Contribtors"
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:476
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:505
 msgid "Subscribers"
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:482
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:511
 msgid "Profile Options"
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:485
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:514
 msgid "Display user images on directory page."
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:488
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:517
 msgid "Display user descriptions on directory page."
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:494
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:523
 msgid "Display user images on profile page."
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:497
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:526
 msgid "Display user descriptions on profile page."
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:500
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:529
 msgid "Display user files on profile page."
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:506
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:535
 msgid ""
 "Number of characters to display of user description on the directory page."
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:510
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:539
 msgid "If no limit is specified, entire user description will be displayed."
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:515
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:544
 msgid "Update Options"
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:546
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:548
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:575
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:577
 msgid "prev"
 msgstr ""
 
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:577
-#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:579
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:606
+#: /Users/ivan/NetBeansProjects/Wordpress/wp-content/plugins/user-list/user-list.php:608
 msgid "next"
 msgstr ""
