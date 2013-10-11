@@ -268,13 +268,15 @@ function get_user_listing($curauth) {
 	}
 	$html .= "<div class=\"wpu-id\"><a href=\"" . get_permalink($post->ID) . $concat . "uid=$curauth->ID\" title=\"$curauth->display_name\">$curauth->display_name</a></div>\n";
 	if (get_option('wpu_description_list')) {
-		if ($curauth->description) {
+		$description = $curauth->description;
+		if ($description) {
 			if (get_option('wpu_description_limit')) {
 				$desc_limit = get_option('wpu_description_limit');
-				$html .=  "<div class=\"wpu-about\">" . substr($curauth->description, 0, $desc_limit) . " [...]</div>\n";
-			} else {
-				$html .=  "<div class=\"wpu-about\">" . $curauth->description . "</div>\n";
-			}
+				$description = substr($description, 0, $desc_limit) . "...";
+			} 
+			
+			$description = preg_replace('/\r|\n/', '<br/>', $description);
+			$html .=  "<div class=\"wpu-about\">" . $description . "</div>\n";		
 		}
 	}
 	$html .= "</div>";
@@ -316,9 +318,11 @@ function display_user() {
 		$html .= "<p><strong>Joined on:</strong>  " . $created . "</p>";
 		
 		if (get_option('wpu_description_profile')) {
+			$description = $curauth->description;
 			if ($curauth->description) {
+				$description = preg_replace('/\r|\n/', '<br/>', $description);
 				$html .= "<p><strong>Profile:</strong></p>\n";
-				$html .= "<p>$curauth->description</p>\n";
+				$html .= "<p>$description</p>\n";
 			}
 		}
 		
