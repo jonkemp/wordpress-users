@@ -1,0 +1,226 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: user-list\n"
+"POT-Creation-Date: 2013-09-03 21:56+0100\n"
+"PO-Revision-Date: 2013-09-03 21:56+0100\n"
+"Last-Translator: \n"
+"Language-Team: chelobaka <kyle1@yandex.ru>\n"
+"Language: Russian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../user-list.php:169 ../user-list.php:269
+msgid "Edit profile"
+msgstr "Редактировать профиль"
+
+#: ../user-list.php:211
+msgid "Back to"
+msgstr "Вернуться к"
+
+#: ../user-list.php:211
+msgid "page"
+msgstr "страница"
+
+#: ../user-list.php:217
+msgid "Get your own avatar"
+msgstr "Получить свой аватар"
+
+#: ../user-list.php:224
+msgid "Website"
+msgstr "Веб-сайт"
+
+#: ../user-list.php:227
+msgid "Joined on"
+msgstr "Дата регистрации"
+
+#: ../user-list.php:233
+msgid "Profile"
+msgstr "Профиль"
+
+#: ../user-list.php:246
+msgid "Recent Posts by"
+msgstr "Последние публикации"
+
+#: ../user-list.php:259
+msgid "Recent Comments by"
+msgstr "Последние комментарии"
+
+#: ../user-list.php:263
+msgid "on"
+msgstr "на"
+
+#: ../user-list.php:295
+msgid "Files"
+msgstr "Файлы"
+
+#: ../user-list.php:405
+msgid "Options Saved"
+msgstr "Настройки сохранены"
+
+#: ../user-list.php:431
+msgid "User List Options"
+msgstr "Настройки списка пользователей"
+
+#: ../user-list.php:434
+msgid "Page ID"
+msgstr "ID страницы"
+
+#: ../user-list.php:435
+msgid "ID of the page on which you want to display the user directory."
+msgstr "ID страницы, где вы хотите разместить каталог пользователей."
+
+#: ../user-list.php:438
+msgid "Users Per Page"
+msgstr "Пользователей на страницу"
+
+#: ../user-list.php:439
+msgid "How many users you want to display at once."
+msgstr "Сколько пользователей вы хотите показывать за раз."
+
+#: ../user-list.php:442
+msgid "Pagination Adjacents"
+msgstr "Разбиение на страницы"
+
+#: ../user-list.php:443
+msgid "Pagination adjacents size"
+msgstr "Размер области разбиения на страницы"
+
+#: ../user-list.php:446
+msgid "Noindex User Listings"
+msgstr "Неиндексировать спискок пользователей"
+
+#: ../user-list.php:447
+msgid ""
+"Insert robots noindex meta tag on user listings to prevent search engine "
+"indexing."
+msgstr ""
+"Вставлять мета-тэг noindex для роботов в списке пользователей для "
+"предотвращения индексации поисковыми сайтами."
+
+#: ../user-list.php:450
+msgid "Use user \"Display name\" for links"
+msgstr "Использовать для ссылок \"Отбражаемое имя\" пользователя"
+
+#: ../user-list.php:457
+msgid "Avatar Options"
+msgstr "Настройки автаров"
+
+#: ../user-list.php:460
+msgid "Avatar Type"
+msgstr "Тип аватара"
+
+#: ../user-list.php:461
+msgid "Gravatars"
+msgstr "Граватары"
+
+#: ../user-list.php:465
+msgid "User Photo"
+msgstr "Фотография пользователя"
+
+#: ../user-list.php:471
+msgid "Gravatar Options"
+msgstr "Настройки граватара"
+
+#: ../user-list.php:474
+msgid "Gravatar Type"
+msgstr "Тип граватара"
+
+#: ../user-list.php:475
+msgid ""
+"Gravatar type - ex. mystery, blank, gravatar_default, identicon, wavatar, "
+"monsterid"
+msgstr ""
+"Тип граватара, например mystery, blank, gravatar_default, identicon, "
+"wavatar, monsterid"
+
+#: ../user-list.php:478
+msgid "Gravatar Size"
+msgstr "Размер граватара"
+
+#: ../user-list.php:479
+msgid "px Size of gravatar in the user listings."
+msgstr "Размер граватара в пикселях в списке пользователей."
+
+#: ../user-list.php:488
+msgid "Select Which Users to Display"
+msgstr "Выберите каких показывать пользователей"
+
+#: ../user-list.php:489 ../user-list.php:539
+msgid "Note"
+msgstr "Внимание"
+
+#: ../user-list.php:489
+msgid "If no options are selected, all users will be displayed."
+msgstr "Если ничего не выбрано, будут показаны все пользователи."
+
+#: ../user-list.php:493
+msgid "Administrators"
+msgstr "Администраторы"
+
+#: ../user-list.php:496
+msgid "Editors"
+msgstr "Редакторы"
+
+#: ../user-list.php:499
+msgid "Authors"
+msgstr "Авторы"
+
+#: ../user-list.php:502
+msgid "Contribtors"
+msgstr "Соавторы"
+
+#: ../user-list.php:505
+msgid "Subscribers"
+msgstr "Подписчики"
+
+#: ../user-list.php:511
+msgid "Profile Options"
+msgstr "Настройки профиля"
+
+#: ../user-list.php:514
+msgid "Display user images on directory page."
+msgstr "Показывать изображения пользователей в каталоге."
+
+#: ../user-list.php:517
+msgid "Display user descriptions on directory page."
+msgstr "Показывать описания пользователей в каталоге."
+
+#: ../user-list.php:523
+msgid "Display user images on profile page."
+msgstr "Показывать изображение пользователя на странице профиля."
+
+#: ../user-list.php:526
+msgid "Display user descriptions on profile page."
+msgstr "Показывать описание пользователя на странице профиля."
+
+#: ../user-list.php:529
+msgid "Display user files on profile page."
+msgstr "Показывать файлы пользователя на странице профиля."
+
+#: ../user-list.php:535
+msgid ""
+"Number of characters to display of user description on the directory page."
+msgstr ""
+"Количество отображаемых символов для одного пользователя в режиме каталога."
+
+#: ../user-list.php:539
+msgid "If no limit is specified, entire user description will be displayed."
+msgstr ""
+"Если не указано ограничение, будет показана вся информация о пользователе."
+
+#: ../user-list.php:544
+msgid "Update Options"
+msgstr "Сохранить настройки"
+
+#: ../user-list.php:575 ../user-list.php:577
+msgid "prev"
+msgstr "пред."
+
+#: ../user-list.php:606 ../user-list.php:608
+msgid "next"
+msgstr "след."

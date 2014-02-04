@@ -23,6 +23,7 @@ Tested up to: 3.5.2
 
 ### Changelog
 
+* 1.5.1: Added Russian language support. Thank you: chelobaka
 * 1.5.1: Added functionality, how to display user links, by ID or Display Name
 * 1.5: Plugin name has changed to User List. Added localization support and swedish translations. New pagination. Added plugin support for User Files, code cleanup and paging bug fix.
 * 1.4: Fixed security issue with potential SQL Injection flaw. Additional bug fixes.

@@ -30,6 +30,7 @@ Display your WordPress users and their profiles in an index on your site.
 
 **Changelog**
 
+* 1.5.1: Added Russian language support. Thank you: chelobaka
 * 1.5.1: Added functionality, how to display user links, by ID or Display Name
 * 1.5: Plugin name has changed to User List. Added localization support and swedish translations. New pagination. Added plugin support for User Files, code cleanup and paging bug fix.
 * 1.4: Fixed security issue with potential SQL Injection flaw. Additional bug fixes.
@@ -43,12 +44,12 @@ Display your WordPress users and their profiles in an index on your site.
 
 == Installation ==
 
-1. Download and unzip 'user-list.zip'.
-1. Upload the 'user-list' directory to the '/wp-content/plugins/' directory.
-1. Activate the plugin through the 'Plugins' menu in WordPress.
+1. Download and unzip `user-list.zip`.
+1. Upload the `user-list` directory to the `/wp-content/plugins/` directory.
+1. Activate the plugin through the `Plugins` menu in WordPress.
 1. Create a page through the add new page menu or select and existing page on which to display the user directory and remember the page ID.
-1. Under 'Settings', click 'User List' and enter the page ID where you want the user directory displayed.
-1. Modify any of the other settings you want, and click 'Update Options'. 
+1. Under `Settings`, click `User List` and enter the page ID where you want the user directory displayed.
+1. Modify any of the other settings you want, and click `Update Options`. 
 1. Go to the page you selected. You should now have a user directory displaying.
 1. In your theme, modify your CSS file to change the look and feel of your directory.
-1. That's it!
+1. That`s it!
