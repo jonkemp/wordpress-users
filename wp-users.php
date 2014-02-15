@@ -82,9 +82,9 @@ function wpu_get_roles()
 
 function display_user_list() {
 
-	// if $_GET['page'] defined, use it as page number
-	if(isset($_GET['page'])) {
-	    $page = $_GET['page'];
+	// if get_query_var('page') defined, use it as page number
+	if(get_query_var('page') != '') {
+	    $page = (int) get_query_var('page');
 	} else {
 		// by default we show first page
 		$page = 1;
